@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Health Checkup</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #357ABD;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .form-section, .feedback-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .form-section:hover, .feedback-section:hover {
+            transform: translateY(-5px);
+            opacity: 0.95;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            color: #4A90E2;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        footer {
+            background-color: #4A90E2;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 3px solid #357ABD;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Personalized Health Checkup</h1>
+    </header>
+    
+    <main>
+        <section class="form-section">
+            <h2>Enter Your Health Details</h2>
+            <form action="/info" method="post">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+        
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+        
+                <label for="height_cm">Height (cm):</label>
+                <input type="number" id="height_cm" name="height_cm" required>
+        
+                <label for="weight_kg">Weight (kg):</label>
+                <input type="number" id="weight_kg" name="weight_kg" required>
+        
+                <label for="sleep_hours">Sleep Hours:</label>
+                <input type="number" step="0.1" id="sleep_hours" name="sleep_hours" required>
+        
+                <label for="sleep_quality">Sleep Quality:</label>
+                <select id="sleep_quality" name="sleep_quality" required>
+                    <option value="Poor">Poor</option>
+                    <option value="Average">Average</option>
+                    <option value="Good">Good</option>
+                </select>
+        
+                <label for="stress_level">Stress Level:</label>
+                <select id="stress_level" name="stress_level" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+        
+                <label for="work_type">Work Type:</label>
+                <select id="work_type" name="work_type" required>
+                    <option value="Sedentary">Sedentary</option>
+                    <option value="Active">Active</option>
+                </select>
+        
+                <label for="alcohol_consumption">Alcohol Consumption (units/week):</label>
+                <input type="number" step="0.1" id="alcohol_consumption" name="alcohol_consumption" required>
+        
+                <label for="smoking_habits">Smoking Habits:</label>
+                <select id="smoking_habits" name="smoking_habits" required>
+                    <option value="Non-smoker">Non-smoker</option>
+                    <option value="Occasional smoker">Occasional smoker</option>
+                    <option value="Regular smoker">Regular smoker</option>
+                </select>
+        
+                <label for="daily_caloric_intake">Daily Caloric Intake:</label>
+                <input type="number" id="daily_caloric_intake" name="daily_caloric_intake" required>
+        
+                <label for="protein_intake_g">Protein Intake (g):</label>
+                <input type="number" id="protein_intake_g" name="protein_intake_g" required>
+        
+                <label for="carb_intake_g">Carb Intake (g):</label>
+                <input type="number" id="carb_intake_g" name="carb_intake_g" required>
+        
+                <label for="fat_intake_g">Fat Intake (g):</label>
+                <input type="number" id="fat_intake_g" name="fat_intake_g" required>
+        
+                <label for="fruit_veg_intake">Fruit & Vegetable Intake:</label>
+                <input type="number" id="fruit_veg_intake" name="fruit_veg_intake" required>
+        
+                <label for="daily_steps">Daily Steps:</label>
+                <input type="number" id="daily_steps" name="daily_steps" required>
+        
+                <label for="exercise_type">Exercise Type:</label>
+                <select id="exercise_type" name="exercise_type" required>
+                    <option value="None">None</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Strength Training">Strength Training</option>
+                </select>
+        
+                <label for="exercise_duration_min">Exercise Duration (min):</label>
+                <input type="number" id="exercise_duration_min" name="exercise_duration_min" required>
+        
+                <label for="heart_rate_bpm">Heart Rate (bpm):</label>
+                <input type="number" id="heart_rate_bpm" name="heart_rate_bpm" required>
+        
+                <label for="blood_pressure_systolic">Blood Pressure Systolic:</label>
+                <input type="number" id="blood_pressure_systolic" name="blood_pressure_systolic" required>
+        
+                <label for="blood_pressure_diastolic">Blood Pressure Diastolic:</label>
+                <input type="number" id="blood_pressure_diastolic" name="blood_pressure_diastolic" required>
+        
+                <label for="blood_sugar_mg_dl">Blood Sugar (mg/dL):</label>
+                <input type="number" id="blood_sugar_mg_dl" name="blood_sugar_mg_dl" required>
+        
+                <label for="cholesterol_mg_dl">Cholesterol (mg/dL):</label>
+                <input type="number" id="cholesterol_mg_dl" name="cholesterol_mg_dl" required>
+        
+                <label for="liver_function_ast">Liver Function AST:</label>
+                <input type="number" id="liver_function_ast" name="liver_function_ast" required>
+        
+                <label for="liver_function_alt">Liver Function ALT:</label>
+                <input type="number" id="liver_function_alt" name="liver_function_alt" required>
+        
+                <label for="mental_health_score">Mental Health Score:</label>
+                <input type="number" step="0.1" id="mental_health_score" name="mental_health_score" required>
+        
+                <input type="submit" href="#feedbackSection" value="Submit">
+            </form>
+        </section>
+        
+        <section id="feedbackSection" class="feedback-section">
+            <h2>Health Feedback</h2>
+            {% if issue and input %}
+            <div class="container">
+                <div class="result-section">
+                    <h2>Input Values:</h2>
+                    <ul>
+                        {% for key, value in input.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h2>Detected Health Issues:</h2>
+                    <ul>
+                        {% for i in issue %}
+                            <li>
+                                <strong>{{ i }}:</strong> 
+                                <a href="#{{ i }}">{{ i }}</a> - 
+                                <a href="{{ result[i]['Article_Link'] }}" target="_blank">Read More</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <h2>Recommendations:</h2>
+                    {% for i in issue %}
+                        <h3 id="{{ i }}">Recommendations for {{ i }} concerns</h3>
+                        <ul>
+                            {% for category, recommendations in result[i].items() %}
+                                {% if category != 'Article_Link' %}
+                                    <li>
+                                        <strong>{{ category }}:</strong>
+                                        <ul>
+                                            {% for recommendation in recommendations %}
+                                                <li>{{ recommendation }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        
+        // JavaScript
+        document.getElementById('healthForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Extract user input
+            const age = document.getElementById('age').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+            const activityLevel = document.getElementById('activityLevel').value;
+            const gender = document.getElementById('gender').value;
+            const diet = document.getElementById('diet').value;
+            const sleepHours = document.getElementById('sleepHours').value;
+            const bloodPressure = document.getElementById('bloodPressure').value;
+            const cholesterol = document.getElementById('cholesterol').value;
+            const smoking = document.getElementById('smoking').value;
+            const alcohol = document.getElementById('alcohol').value;
+            const exerciseFrequency = document.getElementById('exerciseFrequency').value;
+            const medicalConditions = document.getElementById('medicalConditions').value;
+            const heartRate = document.getElementById('heartRate').value;
+            const bloodSugar = document.getElementById('bloodSugar').value;
+            const familyHistory = document.getElementById('familyHistory').value;
+            const currentMedications = document.getElementById('currentMedications').value;
+            const allergies = document.getElementById('allergies').value;
+            
+            // Simple feedback logic
+            let feedback = `Based on the information provided:\n\n`;
+            feedback += `Age: ${age}\n`;
+            feedback += `Weight: ${weight} kg\n`;
+            feedback += `Height: ${height} cm\n`;
+            feedback += `Activity Level: ${activityLevel}\n`;
+            feedback += `Gender: ${gender}\n`;
+            feedback += `Diet: ${diet}\n`;
+            feedback += `Average Sleep Hours: ${sleepHours}\n`;
+            feedback += `Blood Pressure: ${bloodPressure}\n`;
+            feedback += `Cholesterol Level: ${cholesterol} mg/dL\n`;
+            feedback += `Smoking: ${smoking}\n`;
+            feedback += `Alcohol Consumption: ${alcohol}\n`;
+            feedback += `Exercise Frequency: ${exerciseFrequency} times per week\n`;
+            feedback += `Medical Conditions: ${medicalConditions}\n`;
+            feedback += `Resting Heart Rate: ${heartRate} bpm\n`;
+            feedback += `Blood Sugar Level: ${bloodSugar} mg/dL\n`;
+            feedback += `Family History of Chronic Diseases: ${familyHistory}\n`;
+            feedback += `Current Medications: ${currentMedications}\n`;
+            feedback += `Allergies: ${allergies}\n\n`;
+
+            // Provide a sample suggestion (customize based on real data)
+            feedback += `Suggestion: It is highly recommended to consult with a healthcare provider for a detailed health assessment. Consider tracking your vital signs, diet, and exercise regularly, and seek professional guidance to optimize your health and wellness.`;
+
+            // Update feedback section
+            document.getElementById('feedback').textContent = feedback;
+            
+            // Show feedback section with transition
+            document.getElementById('feedbackSection').style.opacity = 1;
+        });
+    </script>
+</body>
+</html>
